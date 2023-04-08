@@ -28,9 +28,9 @@ public class OrderLineEntity {
     public OrderLineEntity() {
     }
 
-    public OrderLineEntity(ProductEntity product, Integer numberOfProducts, Double price) {
+    public OrderLineEntity(ProductEntity product, Integer numberOfProducts) {
         this.product = product;
         this.numberOfProducts = numberOfProducts;
-        this.price = price;
+        this.price = product.getPrice();
     }
 }

@@ -1,6 +1,7 @@
 package ro.online.store.convertor;
 
 import ro.online.store.dto.OrderDTO;
+import ro.online.store.dto.OrderInfoDTO;
 import ro.online.store.entity.OrderEntity;
 
 import java.util.stream.Collectors;
@@ -20,7 +21,6 @@ public class OrderConvertor {
                         .toList(),
                 orderDTO.getStatus());
     }
-
     public static OrderDTO map(OrderEntity orderEntity){
         return new OrderDTO(
                 orderEntity.getUserName(),
@@ -33,5 +33,18 @@ public class OrderConvertor {
                         .toList(),
                 orderEntity.getStatus()
         );
+    }
+    public static OrderInfoDTO mapInfoDTO(OrderEntity orderEntity){
+        return new OrderInfoDTO(
+                orderEntity.getUserName(),
+                orderEntity.getDeliveryAddress(),
+                orderEntity.getUserAddress(),
+                orderEntity.getDateOfSubmission(),
+                orderEntity.getOrderLineEntityList()
+                        .stream()
+                        .map(orderLineEntity -> OrderLineConvertor.mapInfoDTO(orderLineEntity))
+                        .toList(),
+                orderEntity.getStatus()
+                );
     }
 }

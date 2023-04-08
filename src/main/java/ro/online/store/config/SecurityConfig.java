@@ -52,10 +52,13 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.authorizeHttpRequests(auth -> {
+            // Category Rol
             auth.requestMatchers("/api/category/create").hasRole(ROL_ADMIN);
             auth.requestMatchers("/api/category/{id}").hasRole(ROL_USER);
             auth.requestMatchers("/api/category/").hasRole(ROL_USER);
             auth.requestMatchers("/api/category").hasRole(ROL_POWER_USER);
+            //Manufacturer Rol
+            auth.requestMatchers("/api/manufacturer").hasRole(ROL_USER);
         }).httpBasic();
 
         httpSecurity

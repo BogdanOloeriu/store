@@ -1,6 +1,8 @@
 package ro.online.store.convertor;
 
+import jakarta.persistence.criteria.CriteriaBuilder;
 import ro.online.store.dto.ManufacturerDTO;
+import ro.online.store.dto.ManufacturerInfoDTO;
 import ro.online.store.entity.ManufacturerEntity;
 
 public class ManufacturerConvertor {
@@ -16,4 +18,13 @@ public class ManufacturerConvertor {
                 manufacturerEntity.getFirstName(),
                 manufacturerEntity.getLastName());
     }
+
+    public static ManufacturerInfoDTO mapInfoDTO(ManufacturerEntity manufacturerEntity){
+        return new ManufacturerInfoDTO(
+                manufacturerEntity.getId(),
+                manufacturerEntity.getFirstName(),
+                manufacturerEntity.getLastName());
+    }
+
+
 }

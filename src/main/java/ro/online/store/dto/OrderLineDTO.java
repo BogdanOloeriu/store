@@ -12,15 +12,15 @@ import ro.online.store.entity.ProductEntity;
 @EqualsAndHashCode
 public class OrderLineDTO {
 
-    private ProductEntity product;
+    private ProductDTO productDto;
     @NotNull(message = "Number of products must not be null")
     private Integer numberOfProducts;
     @NotNull(message = "Price is mandatory")
     private Double price;
 
-    public OrderLineDTO(ProductEntity product, Integer numberOfProducts, Double price) {
-        this.product = product;
+    public OrderLineDTO(ProductDTO productDto, Integer numberOfProducts) {
+        this.productDto = productDto;
         this.numberOfProducts = numberOfProducts;
-        this.price = product.getPrice();
+        this.price = productDto.getPrice();
     }
 }
